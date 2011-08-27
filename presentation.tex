@@ -58,122 +58,66 @@ Simply, DBMS is a database management system and RDBMS is a relational database 
 \end{frame}
 
 \begin{frame}
-  \frametitle{So }
-  \begin{itemize}
-    \item In the day of ``Free Public Wifi,'' encryption is key
-    \item Encryption protects your banking information
-    \item Encryption protects your email
-    \item You probably want encryption for your {\bf ROOT SHELL}
-  \end{itemize}
-\end{frame}
+  \frametitle{Why relational?}
+It's called a relational database because the tables and data within a given database are defined by how they relate to each other. 
 
-\section{An aside on cryptography}
-
-\begin{frame}
-  \frametitle{How does cryptography work?}
-  \begin{itemize}
-    \item There are two prominent types of cryptography
-    \item Symmetric cryptography
-    \item Asymmetric cryptography
-  \end{itemize}
+We'll get more into this with an example later.
 \end{frame}
 
 \begin{frame}
-  \frametitle{A brief explanation of symmetric cryptography}
+  \frametitle{SQL}
   \begin{itemize}
-    \item Symmetric cryptography is any cryptographic scheme that uses the same key to encrypt or decrypt the payload
-    \item Both sides of the communication use the same shared secret to communicate
-    \item Examples:
-      \begin{itemize}
-	\item AES (Advanced Encryption Standard)
-	  \begin{itemize}
-	    \item A device that could check a billion billion AES keys per second would in theory require about $30^{51}$ years to exhaust the 256-bit key space.
-	  \end{itemize}
-	\item Blowfish
-	\item XOR
-    \end{itemize}
-    \pause
-  \item Symmetric algorithms are generally very fast, but have their limits
-  \item Since the same key is used for encryption and decryption, how do you start communication with another party?
+    \item Structured Query Language
+    \item Not standard, although many SQL standards/versions exist
+    \item SQL-86, SQL-89, SQL-92, SQL:1999, SQL:2003, SQL:2008
+  \end{itemize}
+	Other database query languages include datalog and object query language
+\end{frame}
+
+\begin{frame}
+  \frametitle{More SQL}
+  \begin{itemize}
+    \item Data Definition Language (CREATE, DROP, ALTER)
+    \item Data Manipulation Language (SELECT, INSERT, UPDATE, DELETE)
+    \item Data Control Language (GRANT, REVOKE)
+  \end{itemize}
+\end{frame}
+
+\section{An aside on set theory}
+
+\begin{frame}
+  \frametitle{How do databases work?}
+  \begin{itemize}
+	\item Queries operate on sets of tuples and return sets or bags of tuples
+	\item Tables are sets of tuples
+	\item So queries operate on tables (sets of tuples) and return...a set of tuples (a table)
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{A brief explanation of asymmetric cryptography}
+  \frametitle{How do databases work?}
   \begin{itemize}
-    \item Asymmetric cryptography is any cryptographic scheme that uses different keys to encrypt and decrypt conversations 
-    \item Examples:
-      \begin{itemize}
-	\item RSA (Rivest, Shamir, Adleman)
-	\item DH (Diffie, Hellman)
-    \end{itemize}
-    \pause
-  \item Asymmetric algorithms are generally fairly slow, but allow for initiation secure communications between two parties
-  \item Thus, asymmetric algorithms can be used to start a symmetric cryptographic session
-    \begin{itemize}
-      \item Secure and easy initiation of communication
-      \item High rate of transfer
-    \end{itemize}
+	\item A tuple is an ordered list of elements. An n-tuple is a tuple of n elements. (So a 3-tuple is a tuple of 3 elements). For example a 3-tuple could describe an event. $<$event name, start time, end time$>$ would be a 3-tuple that accomplishes that. $<>$ are used to delineate tuples.
+	\item A set is a unique and unordered collection of elements. When compared for equality, sets with the same elements in any order are considered equal. So \{4, 5, 9\}, \{5, 4, 9\}, and \{5, 9, 4\} are all the same 3 element set.
+	\item A bag, also a multiset, are sets that can have multiple instances of the same element. They are also unordered, so \{4, 4, 5\} and \{4, 5, 4\} are considered equal.
+	\item Sets and bags are delineated with \{\}.
   \end{itemize}
 \end{frame}
 
-\section{Using SSH}
+\section{Using Mysql}
 
 \begin{frame}
-  \frametitle{SSH Keys}
-  \begin{itemize}
-    \item SSH key pairs are ``key'' to how ssh works
-    \pause
-    \item One pair of keys for each host
-    \item This allows hosts to verify each other's identity, to avoid man in the middle attacks
-  \end{itemize}
+  \frametitle{To the Console!}
+	For this section we'll all work together to build a simple database for a blog.
+
+So let's fire up mysql/postgresql and go to work.
 \end{frame}
 
 \begin{frame}
-  \frametitle{SSH User Keys}
+  \frametitle{Advanced Topics}
   \begin{itemize}
-    \item User key pairs are also possible, to avoid using password authentication
-    \item Public key is copied to remote host, private key is kept secure on the local host
-    \item It is possible to password protect your private key, for an added layer of protection
-    \item SSH keypairs are effectively impossible to brute force - MUCH more secure than passwords.
-      \pause
-    \item Having many different keypairs for different machines is ideal
-    \item One key for you github account
-    \item One for your laptop
-    \item One for you desktop
-    \item One for CECS general access
-    \item One for highly secure machines
-      \pause
-    \ldots
-    \item That's a lot of passwords to type and memorize
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{SSH agent}
-  \begin{itemize}
-    \item ssh-agent will store your decrypted private key in memory for each key added
-    \item Need to connect to a series of host in rapid succession? No problem!
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{SSH - not just for shells}
-  \begin{itemize}
-    \item agent forwarding
-    \item compression
-    \item socks proxy
-    \item port forwarding, local and remote
-    \item X forwarding
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Configuring SSH}
-  \begin{itemize}
-    \item ssh\_config
-    \item authorized\_keys
-    \item known\_hosts
+    \item Replication
+    \item Migration
   \end{itemize}
 \end{frame}
 
